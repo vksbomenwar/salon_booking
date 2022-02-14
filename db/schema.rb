@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_152945) do
+ActiveRecord::Schema.define(version: 2022_02_14_025500) do
 
   create_table "salons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name"
@@ -22,4 +22,15 @@ ActiveRecord::Schema.define(version: 2022_02_13_152945) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration"
+    t.decimal "cost", precision: 12, scale: 2
+    t.bigint "salon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_services_on_salon_id"
+  end
+
+  add_foreign_key "services", "salons"
 end

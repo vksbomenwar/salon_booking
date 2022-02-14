@@ -65,6 +65,12 @@ class SalonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def salon_params
-      params.fetch(:salon, {})
+      params.require(:salon).permit(
+        :company_name,
+        :gstin,
+        :pan_number,
+        :address,
+        :no_of_chairs
+      )
     end
 end

@@ -1,0 +1,22 @@
+<%= form_with(model: service, local: true) do |form| %>
+  <% if service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>Name: <%= form.text_field :name%></div>
+  <div>Duration: <%= form.text_field :duration %></div>
+  <div>Cost: <%= form.text_field :cost %></div>
+  <div>Salon:<%= form.collection_select :salon_id, Salon.order(:company_name), :id, :company_name %></div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

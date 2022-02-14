@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  <div>Comapny Name: <%= form.text_field :company_name%></div>
+  <div>GSTIN: <%= form.text_field :gstin %></div>
+  <div>Pan Number: <%= form.text_field :pan_number %></div>
+  <div>Address: <%= form.text_area :address %></div>
+  <div>No. of Chairs: <%= form.text_field :no_of_chairs %></div>
   <div class="actions">
     <%= form.submit %>
   </div>
