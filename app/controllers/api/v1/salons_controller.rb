@@ -41,7 +41,8 @@ class Api::V1::SalonsController < ApplicationController
     	:full_name,
     	:phone_no,
       :salon_id,
-      :service_id
+      :service_id,
+      :booking_time
     ]
 
     JSON.parse(params.to_json).symbolize_keys.slice(*array)
