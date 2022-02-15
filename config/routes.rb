@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     	resources :salons do
 	    	collection do
 	        post 'get_time_slot_for_service'
+	        post 'service_booking'
 	      end
 	    end
     end

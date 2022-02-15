@@ -19,8 +19,27 @@ class Api::V1::SalonsController < ApplicationController
     )
 	end
 
-	def salon_params
+  def service_booking
+    service_book = Booking.new(booking_params)
+
+    if service_book.save
+      render(
+        json: { 
+          success: true,
+          data: JSON.parse(service_book.to_json),
+          errors: []
+        },
+        status: 201
+      )
+    else
+      api_error(status: 500, errors: service_book.errors.full_messages)
+    end
+  end
+
+  def booking_params
     array = [
+    	:full_name,
+    	:phone_no,
       :salon_id,
       :service_id
     ]
